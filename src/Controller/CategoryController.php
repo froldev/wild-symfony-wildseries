@@ -3,51 +3,30 @@
 namespace App\Controller;
 
 use App\Entity\Category;
-use App\Form\CategoryType;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
-use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use App\Form\CategoryType;
+use Symfony\Component\HttpFoundation\Request;
 
-/**
- * Class CategoryController
- * @package App\Controller
- * @Route("/category", name="category_")
- */
 class CategoryController extends AbstractController
 {
     /**
-     * @param Request $request
-     * @return Response
-     * @Route("/add", name="add")
+     * @Route ("/category", name="wild_category")
+     * @return Response A Response instance
      */
-    public function add(Request $request): Response
+    public function addCategory(Request $request): Response
     {
         $category = new Category();
         $form = $this->createForm(CategoryType::class, $category);
         $form->handleRequest($request);
-        if ($form->isSubmitted() && $form->isValid()) {
-            $category = $form->getData();
-            $categoryManager = $this->getDoctrine()->getManager();
-            $categoryManager->persist($category);
-            $categoryManager->flush();
-            return $this->redirectToRoute('category_index');
+        if ($form->isSubmitted() && $form->isValid()){
+            $data = $this->getDoctrine()->getManager();
+            $data->persist($category);
+            $data->flush();
         }
-        return $this->render("category/add.html.twig", [
+        return $this->render('wild/formCategory.html.twig', [
             'form' => $form->createView(),
-        ]);
-    }
-    /**
-     * @return Response
-     * @Route("", name="index")
-     */
-    public function index(): Response
-    {
-        $categories = $this->getDoctrine()
-            ->getRepository(Category::class)
-            ->findAll();
-        return $this->render("category/index.html.twig", [
-            "categories" => $categories,
         ]);
     }
 }

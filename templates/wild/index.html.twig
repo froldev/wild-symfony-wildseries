@@ -3,7 +3,7 @@
 {% block title %}Wild Séries || Liste des programmes{% endblock %}
 
 {% block body %}
-    <h1>Toutes les séries de la table program : </h1>
+    <h1 class="m-3" style="text-align:center">Toute la programmation : </h1>
     <div class="row">
 
     {% for program in programs %}
@@ -13,7 +13,7 @@
                 <h3 class="card-title">{{ loop.index }} - {{ program.title }}</h3>
                 <h5>Catégorie : {{ program.category.name }}</h5>
                 <p class="card-text">{{ program.summary }}</p>
-                <a class="btn btn-secondary" href="{{ path('show_program', { 'slug' : program.title } ) }}">Détails</a>
+                <a class="btn btn-secondary mx-auto" href="{{ path('show_program', { 'slug' : program.title } ) }}">Détails</a>
             </div>
         </div>
     {% else %}
