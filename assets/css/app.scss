@@ -1,0 +1,13 @@
+$theme-colors : (
+        'primary' : #04395E,
+);
+
+body {
+    background-color: blue;
+}
+
+.navbar{
+    background-color: var(--primary);
+}
+
+@import "~bootstrap/scss/bootstrap";

@@ -1,0 +1,17 @@
+{% extends "base.html.twig" %}
+
+{% block title %}{% endblock %}
+
+{% block body %}
+        <div class="media">
+            <img class="align-self-start mr-3" src="" alt="">
+            <div class="media-body">
+                <div>
+                    <h4>Episode {{ episode.number }} : {{ episode.title }}</h4>
+                    <p>{{ episode.synopsis }}</p>
+                    <a href="{{ path('show_season', {'seasonId' : season.id}) }}"><p>Revenir aux épisodes de la saison {{ season.id }}</p></a>
+                </div>
+            </div>
+        </div>
+
+{% endblock %}

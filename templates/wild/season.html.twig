@@ -1,0 +1,18 @@
+{% extends "base.html.twig" %}
+
+{% block title %}{% endblock %}
+
+{% block body %}
+    {% for episode in episodes %}
+        <div class="media">
+            <img class="align-self-start mr-3" src="" alt="">
+            <div class="media-body">
+                <div>
+                    <a href="{{ path('show_episode', { 'id' : episode.id }) }}"><h4>Episode {{ episode.number }} : {{ episode.title }}</h4></a>
+                    <p>{{ episode.synopsis }}</p>
+                </div>
+            </div>
+        </div>
+    {% endfor %}
+
+{% endblock %}
