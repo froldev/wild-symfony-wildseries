@@ -1,13 +1,17 @@
 {% extends "base.html.twig" %}
 
 {% block body %}
-    <section class="align-items-center">
+    <section>
         <h1>Home</h1>
-        <a class="btn btn-secondary mb-3" href="{{ path('wild_show', { 'slug': "walking-dead" }) }}">
-            Testing show() method from WildController with a real program s slug : Walking Dead.
-        </a>
-        <a class="btn btn-secondary" href="{{ path('wild_index') }}">
-            Testing index() method from WildController to view all programs.
-        </a>
+        <div class="row mx-auto">
+            <a class="btn btn-secondary mx-auto mb-3" href="{{ path('wild_show', { 'slug': "walking-dead" }) }}">
+                Détails de la série Walking Dead
+            </a>
+        </div>
+        <div class="row">
+            <a class="btn btn-secondary mx-auto" href="{{ path('wild_index') }}">
+                Voir tout le programme
+            </a>
+        </div>
     </section>
 {% endblock %}
