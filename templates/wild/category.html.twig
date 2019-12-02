@@ -1,20 +1,18 @@
-{% extends "base.html.twig" %}
+{% extends 'base.html.twig' %}
 
-{% block title %}All categoryDetails{% endblock %}
+{% block title %}{{ category.name }}{% endblock %}
 
-{%  block body %}
-
-{% for category in categories %}
-
-    <div>
-        <h2>{{ loop.index }} / {{ category.title }} - Catégorie : {{  category.category.name }}</h2>
-        <p> {{ category.summary }}</p>
-    </div>
-{% else %}
-    Aucune série trouvée
-{% endfor %}
-<a href="{{ path('app_index') }}">
-    Retour à l'accueil
-</a>
-
+{% block body %}
+    <h1>Les 3 dernières séries de la catégorie {{ category.name }} : </h1>
+    {% for program in programs %}
+        <div>
+            <h2>{{ loop.index }} / {{ program.title }} -Id : {{ program.id }}</h2>
+            <p>{{ program.summary }}</p>
+        </div>
+    {% else %}
+        Aucune série trouvée.
+    {% endfor %}
+    <a href="{{ path('app_index') }}">
+        Retour à l'accueil
+    </a>
 {% endblock %}

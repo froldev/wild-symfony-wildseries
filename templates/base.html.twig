@@ -9,14 +9,11 @@
         {% endblock %}
 
     </head>
-    <body>
-{% include "navbar.html.twig" %}
+    <body class="bg-primary text-secondary">
 
+        {% include "bricks/navbar.html.twig" %}
 
         {% block body %}
-
-            Welcome to Symfony !
-
         {% endblock %}
 
         {% block javascripts %}

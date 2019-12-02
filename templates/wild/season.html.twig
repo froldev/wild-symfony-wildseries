@@ -1,18 +1,19 @@
-{% extends "base.html.twig" %}
+{% extends 'base.html.twig' %}
 
-{% block title %}{% endblock %}
+{% block title %}All episodes{% endblock %}
 
 {% block body %}
+    <h2>Saison {{ season.number }} de {{ program.title }}</h2>
+    <p>{{ season.description }}</p>
     {% for episode in episodes %}
-        <div class="media">
-            <img class="align-self-start mr-3" src="" alt="">
-            <div class="media-body">
-                <div>
-                    <a href="{{ path('show_episode', { 'id' : episode.id }) }}"><h4>Episode {{ episode.number }} : {{ episode.title }}</h4></a>
-                    <p>{{ episode.synopsis }}</p>
-                </div>
-            </div>
+        <div>
+            <h3><a href="{{ path('wild_show_episode', {'id': episode.id }) }}">{{ episode.number }} / {{ episode.title }}</a></h3>
+            <p>{{ episode.synopsis }}</p>
         </div>
+    {% else %}
+        Aucun épisode trouvé.
     {% endfor %}
-
+    <a href="{{ path('app_index') }}">
+        Retour à l'accueil
+    </a>
 {% endblock %}
