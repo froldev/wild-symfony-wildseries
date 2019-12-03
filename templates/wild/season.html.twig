@@ -13,8 +13,8 @@
             </div>
         </div>
     {% endfor %}
-    <a class="btn btn-dark m-3" href="{{ path('wild_index') }}">
-        Retour à la programmation
+    <a class="btn btn-dark m-3" href="{{ path('show_program', {'slug' : seasons.program.title}) }}">
+        Retour à la série {{ seasons.program.title }}
     </a>
 
 {% endblock %}
