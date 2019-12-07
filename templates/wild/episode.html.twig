@@ -1,19 +1,22 @@
 {% extends "base.html.twig" %}
 
-{% block title %}{% endblock %}
-
+{% block title %}Wild Séries || Episode {{ episode.title }} - {{ episode.season.program.title }}{% endblock %}
 {% block body %}
-
-    <div class="media">
-        <div class="media-body">
+    <section class="card text-dark m-3">
+        <div class="card-header bg-secondary">
+            <h1>Episode : {{ episode.title }}</h1>
+        </div>
+        <div class="media p-3">
             <div>
-                <h4>Episode {{ episode.number }} : {{ episode.title }}</h4>
-                <p>{{ episode.synopsis }}</p>
-                <a class="btn btn-dark" href="{{ path('show_season', {'seasonId' : season.id}) }}">
-                    Retour
-                </a>
+                <p>Programme : {{ episode.season.program.title }}</p>
+                <p>Année : {{ episode.season.year }}</p>
+                <p>Numéro : {{ episode.number }}</p>
+                <p>Synopsis : {{ episode.synopsis }}</p>
             </div>
         </div>
-    </div>
+    </section>
+    <a class="btn btn-dark" href="{{ path('season', {'seasonId' : episode.season.id}) }}">
+        Retour
+    </a>
 
 {% endblock %}

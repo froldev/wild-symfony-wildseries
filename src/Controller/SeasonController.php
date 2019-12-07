@@ -24,6 +24,7 @@ class SeasonController extends AbstractController
             'seasons' => $seasonRepository->findAll(),
         ]);
     }
+
     /**
      * @Route("/new", name="season_new", methods={"GET","POST"})
      */
@@ -32,17 +33,21 @@ class SeasonController extends AbstractController
         $season = new Season();
         $form = $this->createForm(SeasonType::class, $season);
         $form->handleRequest($request);
+
         if ($form->isSubmitted() && $form->isValid()) {
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->persist($season);
             $entityManager->flush();
+
             return $this->redirectToRoute('season_index');
         }
+
         return $this->render('season/new.html.twig', [
             'season' => $season,
             'form' => $form->createView(),
         ]);
     }
+
     /**
      * @Route("/{id}", name="season_show", methods={"GET"})
      */
@@ -52,6 +57,7 @@ class SeasonController extends AbstractController
             'season' => $season,
         ]);
     }
+
     /**
      * @Route("/{id}/edit", name="season_edit", methods={"GET","POST"})
      */
@@ -59,15 +65,19 @@ class SeasonController extends AbstractController
     {
         $form = $this->createForm(SeasonType::class, $season);
         $form->handleRequest($request);
+
         if ($form->isSubmitted() && $form->isValid()) {
             $this->getDoctrine()->getManager()->flush();
+
             return $this->redirectToRoute('season_index');
         }
+
         return $this->render('season/edit.html.twig', [
             'season' => $season,
             'form' => $form->createView(),
         ]);
     }
+
     /**
      * @Route("/{id}", name="season_delete", methods={"DELETE"})
      */
@@ -78,6 +88,7 @@ class SeasonController extends AbstractController
             $entityManager->remove($season);
             $entityManager->flush();
         }
+
         return $this->redirectToRoute('season_index');
     }
 }

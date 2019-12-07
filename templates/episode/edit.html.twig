@@ -1,0 +1,16 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Wild Séries || Mise à jour de l'épisode {{ episode.title }}{% endblock %}
+
+{% block body %}
+    <section class="card text-dark m-3">
+        <div class="card-header bg-secondary">
+            <h1>Mise à jour de l'épisode {{ episode.title }} du programme {{ episode.season.program.title }}</h1>
+        </div>
+        <div class="p-3">
+            {{ include('episode/_form.html.twig', {'button_label': 'Update'}) }}
+        </div>
+    </section>
+    <a class="btn btn-dark" href="{{ path('episode_index') }}">Retour aux épisodes</a>
+
+{% endblock %}

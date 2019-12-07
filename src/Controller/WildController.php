@@ -8,19 +8,22 @@ use App\Entity\Program;
 use App\Entity\Season;
 use App\Form\CategoryType;
 use App\Form\ProgramSearchType;
+use App\Repository\CategoryRepository;
 use App\Repository\EpisodeRepository;
+use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
-use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\HttpFoundation\Response as Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\HttpFoundation\Request;
+
 
 class WildController extends AbstractController
 {
     /**
-     * @Route ("wild/index", name="wild_index")
+     * @Route ("/show/all", name="all_program")
      * @return Response A response instance
      */
-    public function index(): Response
+    public function program(): Response
     {
         $programs = $this->getDoctrine()
             ->getRepository(Program::class)
@@ -30,15 +33,13 @@ class WildController extends AbstractController
                 'No program found in program\'s table.'
             );
         }
-        return $this->render('wild/index.html.twig', [
+        return $this->render('wild/program.html.twig', [
             'programs' => $programs,
         ]);
     }
     /**
-     * Getting a program with a formatted id for title
-     *
      * @param string $slug
-     * @Route ("wild/{slug}", name="show_program")
+     * @Route ("/show/{slug}", name="program_slug")
      * @return Response A Response instance
      */
     public function showByProgram($slug): Response
@@ -70,7 +71,7 @@ class WildController extends AbstractController
     }
     /**
      * @param string $categoryName
-     * @Route ("wild/category/{categoryName}", name="show_category")
+     * @Route ("/show/category/{categoryName}", name="show_category")
      * @return Response A Response instance
      */
     public function showByCategory(string $categoryName)
@@ -92,7 +93,7 @@ class WildController extends AbstractController
     }
     /**
      * @param integer $seasonId
-     * @Route ("wild/season/{seasonId}", name="show_season")
+     * @Route ("/show/season/{seasonId}", name="season")
      * @return Response A Response instance
      */
     public function showBySeason(int $seasonId)
@@ -110,12 +111,12 @@ class WildController extends AbstractController
     }
     /**
      * @param integer $id
-     * @Route ("wild/episode/{id}", name="show_episode")
+     * @Route ("/show/episode/{id}", name="episode")
      * @return Response A Response instance
      */
-    public function showEpisode(Episode $episode): Response
+    public function showEpisode(Episode $episode, int $id): Response
     {
-        $season = $episode->getSeason();
+        $season = $episode->getId();
         return $this->render("wild/episode.html.twig", [
             'episode' => $episode,
             'season' => $season,

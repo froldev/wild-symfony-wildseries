@@ -1,0 +1,31 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Wild Séries || {{ category.name }}{% endblock %}
+
+{% block body %}
+    <section class="card text-dark m-3">
+        <div class="card-header bg-secondary">
+            <h1>Catégorie : {{ category.name }}</h1>
+        </div>
+        <div>
+            <table class="table table-light table-striped table-bordered">
+                <table class="table table-light table-striped table-bordered">
+                    <thead class="thead-dark">
+                    <tr>
+                        <th>Numéro</th>
+                        <th>Nom</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                <tbody>
+                    <tr>
+                        <td>{{ category.id }}</td>
+                        <td>{{ category.name }}</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </section>
+    <a class="btn btn-secondary" href="{{ path('category_index') }}">Retour aux catégories</a>
+
+{% endblock %}

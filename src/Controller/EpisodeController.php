@@ -24,6 +24,7 @@ class EpisodeController extends AbstractController
             'episodes' => $episodeRepository->findAll(),
         ]);
     }
+
     /**
      * @Route("/new", name="episode_new", methods={"GET","POST"})
      */
@@ -32,17 +33,21 @@ class EpisodeController extends AbstractController
         $episode = new Episode();
         $form = $this->createForm(EpisodeType::class, $episode);
         $form->handleRequest($request);
+
         if ($form->isSubmitted() && $form->isValid()) {
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->persist($episode);
             $entityManager->flush();
+
             return $this->redirectToRoute('episode_index');
         }
+
         return $this->render('episode/new.html.twig', [
             'episode' => $episode,
             'form' => $form->createView(),
         ]);
     }
+
     /**
      * @Route("/{id}", name="episode_show", methods={"GET"})
      */
@@ -52,6 +57,7 @@ class EpisodeController extends AbstractController
             'episode' => $episode,
         ]);
     }
+
     /**
      * @Route("/{id}/edit", name="episode_edit", methods={"GET","POST"})
      */
@@ -59,15 +65,19 @@ class EpisodeController extends AbstractController
     {
         $form = $this->createForm(EpisodeType::class, $episode);
         $form->handleRequest($request);
+
         if ($form->isSubmitted() && $form->isValid()) {
             $this->getDoctrine()->getManager()->flush();
+
             return $this->redirectToRoute('episode_index');
         }
+
         return $this->render('episode/edit.html.twig', [
             'episode' => $episode,
             'form' => $form->createView(),
         ]);
     }
+
     /**
      * @Route("/{id}", name="episode_delete", methods={"DELETE"})
      */
@@ -78,6 +88,7 @@ class EpisodeController extends AbstractController
             $entityManager->remove($episode);
             $entityManager->flush();
         }
+
         return $this->redirectToRoute('episode_index');
     }
 }

@@ -1,18 +1,29 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}{{ category.name }}{% endblock %}
+{% block title %}Wild Séries || Catégories{% endblock %}
 
 {% block body %}
-    <h1>Les 3 dernières séries de la catégorie {{ category.name }} : </h1>
-    {% for program in programs %}
-        <div>
-            <h2>{{ loop.index }} / {{ program.title }} -Id : {{ program.id }}</h2>
-            <p>{{ program.summary }}</p>
+    <section>
+        <div class="row">
+            <h1>Ajouter une catégorie : </h1>
         </div>
-    {% else %}
-        Aucune série trouvée.
-    {% endfor %}
-    <a href="{{ path('app_index') }}">
+        <div class="row">
+            {{ form(formCategory) }}
+        </div>
+        <div class="row">
+            <h1>Les catégories : </h1>
+            <table class="table col-8 offset-2 mt-3">
+                <tbody>
+                {% for category in categories %}
+                <tr>
+                    <td class="text-white">{{ category.title }}</td>
+                </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </section>
+    <a href="{{ path('app_index') }}" class="btn btn-dark mt-3">
         Retour à l'accueil
     </a>
 {% endblock %}

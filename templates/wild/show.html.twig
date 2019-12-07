@@ -13,15 +13,15 @@
             <p>{{ id }}</p>
             <div class="row">
             {% for season in seasons %}
-                <a class="btn btn-danger m-3" href="{{ path('show_season',{ 'seasonId' : season.id } ) }}">
+                <a class="btn btn-danger m-3" href="{{ path('season',{ 'seasonId' : season.id } ) }}">
                     Saison {{ loop.index }}
                 </a>
             {% endfor %}
             </div>
         </div>
     </div>
-    <a class="btn btn-dark m-3" href="{{ path('wild_index') }}">
-        Retour au programme
+    <a class="btn btn-dark m-3" href="{{ path('all_program') }}">
+        Retour aux programmes
     </a>
 
 {% endblock %}

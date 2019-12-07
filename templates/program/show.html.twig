@@ -1,0 +1,21 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Wild Séries || {{ program.title }}{% endblock %}
+
+{% block body %}
+    <section class="card text-dark m-3">
+        <div class="card-header bg-secondary">
+            <h1 class="mx-auto">{{ program.title }}</h1>
+        </div>
+        <div class="media">
+            <img class="col-sm-12 col-md-6 p-3" src="{{ program.poster }}" alt="{{ program.title }} poster">
+            <div class="media-body col-sm-12 col-md-6 p-3">
+                <p>{{ program.summary }}</p>
+                <p>Catégorie : {{ program.category.name }}</p>
+            </div>
+        </div>
+    </section>
+    <a class="btn btn-dark m-3" href="{{ path('program_index') }}">
+        Retour aux programmes
+    </a>
+{% endblock %}

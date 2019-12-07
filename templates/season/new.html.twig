@@ -1,0 +1,15 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Wild Séries || Nouvelle saison{% endblock %}
+
+{% block body %}
+    <section class="card text-dark m-3">
+        <div class="card-header bg-secondary">
+            <h1>Créer une nouvelle saison : </h1>
+        </div>
+        <div class="p-3">
+            {{ include('season/_form.html.twig') }}
+        </div>
+    </section>
+    <a class="btn btn-dark" href="{{ path('season_index') }}">Retour aux saisons</a>
+{% endblock %}

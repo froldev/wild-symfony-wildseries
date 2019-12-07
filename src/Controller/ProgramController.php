@@ -24,6 +24,7 @@ class ProgramController extends AbstractController
             'programs' => $programRepository->findAll(),
         ]);
     }
+
     /**
      * @Route("/new", name="program_new", methods={"GET","POST"})
      */
@@ -32,17 +33,21 @@ class ProgramController extends AbstractController
         $program = new Program();
         $form = $this->createForm(ProgramType::class, $program);
         $form->handleRequest($request);
+
         if ($form->isSubmitted() && $form->isValid()) {
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->persist($program);
             $entityManager->flush();
-            return $this->redirectToRoute('program_index');
+
+            return $this->redirectToRoute('category_index');
         }
+
         return $this->render('program/new.html.twig', [
             'program' => $program,
             'form' => $form->createView(),
         ]);
     }
+
     /**
      * @Route("/{id}", name="program_show", methods={"GET"})
      */
@@ -52,6 +57,7 @@ class ProgramController extends AbstractController
             'program' => $program,
         ]);
     }
+
     /**
      * @Route("/{id}/edit", name="program_edit", methods={"GET","POST"})
      */
@@ -59,15 +65,19 @@ class ProgramController extends AbstractController
     {
         $form = $this->createForm(ProgramType::class, $program);
         $form->handleRequest($request);
+
         if ($form->isSubmitted() && $form->isValid()) {
             $this->getDoctrine()->getManager()->flush();
+
             return $this->redirectToRoute('program_index');
         }
+
         return $this->render('program/edit.html.twig', [
             'program' => $program,
             'form' => $form->createView(),
         ]);
     }
+
     /**
      * @Route("/{id}", name="program_delete", methods={"DELETE"})
      */
@@ -78,6 +88,7 @@ class ProgramController extends AbstractController
             $entityManager->remove($program);
             $entityManager->flush();
         }
+
         return $this->redirectToRoute('program_index');
     }
 }

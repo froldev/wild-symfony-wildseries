@@ -3,17 +3,19 @@
 {% block title %}{% endblock %}
 
 {% block body %}
-    {% for episode in episodes %}
+    <section>
+    {% for episode in seasons.episodes %}
         <div class="card text-dark m-3 p-3">
             <h5 class="card-header bg-dark text-white">Episode n° {{ episode.number }}</h5>
             <div class="card-body">
                 <h5 class="card-title">{{episode.title}}</h5>
                 <p class="card-text">{{episode.synopsis}}</p>
-                <a class="btn btn-secondary" href="{{ path('show_episode', { 'id' : episode.id } ) }}">Voir</a>
+                <a class="btn btn-secondary" href="{{ path('episode', { 'id' : episode.id } ) }}">En savoir plus</a>
             </div>
         </div>
     {% endfor %}
-    <a class="btn btn-dark m-3" href="{{ path('show_program', {'slug' : seasons.program.title}) }}">
+    </section>
+    <a class="btn btn-dark m-3" href="{{ path('program_slug', {'slug' : seasons.program.title}) }}">
         Retour à la série {{ seasons.program.title }}
     </a>
 

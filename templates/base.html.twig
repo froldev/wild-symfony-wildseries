@@ -12,9 +12,9 @@
     <body class="bg-primary text-secondary">
 
         {% include "bricks/navbar.html.twig" %}
-
-        {% block body %}
-        {% endblock %}
+        <div class="container">
+        {% block body %}{% endblock %}
+        </div>
 
         {% block javascripts %}
             {{ encore_entry_script_tags('app') }}

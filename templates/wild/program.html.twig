@@ -1,0 +1,31 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Wild Séries || Liste des programmes{% endblock %}
+
+{% block body %}
+
+    <section>
+        <h1 class="m-3">Toute la programmation : </h1>
+        <div class="row">
+
+            {% for program in programs %}
+                <div class="card col-sm-12 col-md-4 text-dark p-3">
+                    <img class="card-img-top" src="{{ program.poster }}" alt="{{ program.title }}">
+                    <div class="card-body">
+                        <h3 class="card-title">{{ loop.index }} - {{ program.title }}</h3>
+                        <h5>Catégorie : {{ program.category.name }}</h5>
+                        <p class="card-text">{{ program.summary }}</p>
+                        <a class="btn btn-secondary mx-auto" href="{{ path('program_slug', { 'slug' : program.title } ) }}">Détails</a>
+                    </div>
+                </div>
+
+            {% else %}
+                <p>Aucune série trouvée.</p>
+            {% endfor %}
+
+        </div>
+    </section>
+    <a href="{{ path('app_index') }}" class="btn btn-dark m-3">
+        Retour à l'accueil
+    </a>
+{% endblock %}
