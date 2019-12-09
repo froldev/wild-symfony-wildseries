@@ -1,0 +1,28 @@
+{% extends "base.html.twig" %}
+
+{% block title %}Wild Séries || Acteur {{ actor.name }}{% endblock %}
+
+{% block body %}
+    <section class="m-3">
+        <div>
+            <h1>Acteur : {{ actor.name }}</h1>
+        </div>
+        <div class="p-3">
+            <strong>Liste des programmes :</strong>
+            <ul>
+                {% for program in actor.programs %}
+                    <li>
+                        <a class="text-secondary" href="{{ path('program_slug', {'slug' : program.title }) }}">
+                            {{ program.title }}
+                        </a>
+                    </li>
+                {% else %}
+                    <li>Aucun programme pour cet acteur</li>
+                {% endfor %}
+            </ul>
+        </div>
+    </section>
+    <a class="btn btn-dark m-3" href="{{ path('all_program') }}">
+        Retour aux programmes
+    </a>
+{% endblock %}

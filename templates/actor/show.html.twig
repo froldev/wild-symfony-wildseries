@@ -1,0 +1,30 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Actor{% endblock %}
+
+{% block body %}
+    <section class="card text-dark m-3">
+        <div class="card-header bg-secondary">
+            <h1>Acteur : {{ actor.name }}</h1>
+        </div>
+        <div>
+            <table class="table table-light table-striped table-bordered">
+                <table class="table table-light table-striped table-bordered">
+                    <thead class="thead-dark">
+                    <tr>
+                        <th>Numéro</th>
+                        <th>Nom</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tbody>
+                    <tr>
+                        <td>{{ actor.id }}</td>
+                        <td>{{ actor.name }}</td>
+                    </tr>
+                    </tbody>
+                </table>
+        </div>
+    </section>
+    <a class="btn btn-secondary" href="{{ path('actor_index') }}">Retour aux acteurs</a>
+{% endblock %}
