@@ -18,4 +18,7 @@ https://www.loom.com/share/afea7837f8f54956b4c586abba419f8d
 14 - Symfony : EntityType
 https://www.loom.com/share/423135ea8d224b3f978917ca0192d986
 
+15 - Symfony : Les fixtures
+https://www.loom.com/share/f95a7aeff9a2471f8d0890b3660692a8
+
 
