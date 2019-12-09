@@ -26,11 +26,6 @@ class Program
     /**
      * @ORM\Column(type="text")
      */
-    private $summary;
-
-    /**
-     * @ORM\Column(type="text")
-     */
     private $poster;
 
     /**
@@ -48,6 +43,11 @@ class Program
      * @ORM\ManyToMany(targetEntity="App\Entity\Actor", mappedBy="programs")
      */
     private $actors;
+
+    /**
+     * @ORM\Column(type="text")
+     */
+    private $summary;
 
     public function __construct()
     {
@@ -68,18 +68,6 @@ class Program
     public function setTitle(string $title): self
     {
         $this->title = $title;
-
-        return $this;
-    }
-
-    public function getSummary(): ?string
-    {
-        return $this->summary;
-    }
-
-    public function setSummary(string $summary): self
-    {
-        $this->summary = $summary;
 
         return $this;
     }
@@ -163,6 +151,18 @@ class Program
             $this->actors->removeElement($actor);
             $actor->removeProgram($this);
         }
+
+        return $this;
+    }
+
+    public function getSummary(): ?string
+    {
+        return $this->summary;
+    }
+
+    public function setSummary(string $summary): self
+    {
+        $this->summary = $summary;
 
         return $this;
     }

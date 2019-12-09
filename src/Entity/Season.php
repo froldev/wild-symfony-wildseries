@@ -19,11 +19,6 @@ class Season
     private $id;
 
     /**
-     * @ORM\Column(type="integer", nullable=true)
-     */
-    private $year;
-
-    /**
      * @ORM\Column(type="text", nullable=true)
      */
     private $description;
@@ -39,6 +34,11 @@ class Season
      */
     private $episodes;
 
+    /**
+     * @ORM\Column(type="integer")
+     */
+    private $year;
+
     public function __construct()
     {
         $this->episodes = new ArrayCollection();
@@ -47,18 +47,6 @@ class Season
     public function getId(): ?int
     {
         return $this->id;
-    }
-
-    public function getYear(): ?int
-    {
-        return $this->year;
-    }
-
-    public function setYear(?int $year): self
-    {
-        $this->year = $year;
-
-        return $this;
     }
 
     public function getDescription(): ?string
@@ -112,6 +100,18 @@ class Season
                 $episode->setSeason(null);
             }
         }
+
+        return $this;
+    }
+
+    public function getYear(): ?int
+    {
+        return $this->year;
+    }
+
+    public function setYear(int $year): self
+    {
+        $this->year = $year;
 
         return $this;
     }
