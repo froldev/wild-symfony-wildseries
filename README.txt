@@ -21,4 +21,6 @@ https://www.loom.com/share/423135ea8d224b3f978917ca0192d986
 15 - Symfony : Les fixtures
 https://www.loom.com/share/f95a7aeff9a2471f8d0890b3660692a8
 
+16 - Symfony : Introduction aux “Services”
+https://www.loom.com/share/c820e40d8a894c15b56a1519ea07d5d6
 

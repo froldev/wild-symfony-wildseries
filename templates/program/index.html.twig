@@ -22,6 +22,7 @@
                 <tr>
                     <th>Titre</th>
                     <th>Catégorie</th>
+                    <th>Slug</th>
                     <th>Voir</th>
                     <th>Mettre à jour</th>
                     <th>Supprimer</th>
@@ -32,6 +33,7 @@
                     <tr>
                         <td>{{ program.title }}</td>
                         <td>{{ program.category.name }}</td>
+                        <td>{{ program.slug }}</td>
                         <td>
                             <a class="btn btn-success text-white" href="{{ path('program_show', {'id': program.id}) }}">Voir</a>
                         </td>
