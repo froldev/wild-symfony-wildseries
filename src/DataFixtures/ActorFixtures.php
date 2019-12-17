@@ -15,7 +15,7 @@ class ActorFixtures extends Fixture implements DependentFixtureInterface
     {
         $faker = Faker\Factory::create('fr_FR');
         $slugify = new Slugify();
-        for ($i = 0; $i <= 100; $i++)
+        for ($i = 0; $i <= 20; $i++)
         {
             $actor = new Actor();
             $slugify = new Slugify();

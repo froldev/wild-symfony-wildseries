@@ -24,3 +24,6 @@ https://www.loom.com/share/f95a7aeff9a2471f8d0890b3660692a8
 16 - Symfony : Introduction aux “Services”
 https://www.loom.com/share/c820e40d8a894c15b56a1519ea07d5d6
 
+21 - Symfony : validation
+https://www.loom.com/share/f89dc38f898b4d60864c745bc085a8ba
+
